@@ -3,14 +3,9 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import { ExternalLink, Eye, MessageCircle } from "lucide-react";
-import sematicaPreview from "@/assets/sematica.png";
-import budgetHairPreview from "@/assets/budget1.jpeg";
-import budget2HairPreview from "@/assets/budget2.jpeg";
-import farmManagerPreview from "@/assets/farm1.jpeg";
-import farmManager2Preview from "@/assets/farm2.jpeg";
-import farmManager3Preview from "@/assets/farm3.jpeg";
-import expensiflyPreview from "@/assets/expe1.jpeg";
-import expensifly2Preview from "@/assets/expe2.jpeg";
+import sematicaPreview from "@/assets/sematica-preview.jpg";
+import budgetHairPreview from "@/assets/budget-hair-preview.jpg";
+import farmManagerPreview from "@/assets/farm-manager-preview.jpg";
 
 const Projects = () => {
   const projects = [
@@ -26,7 +21,7 @@ const Projects = () => {
     {
       title: "Budget Hair – Stock Management",
       description: "Custom-built stock management system for Budget Hair, a braids retail shop in Kenya. Features real-time inventory tracking, sales management, and automated restocking alerts.",
-      images: [budgetHairPreview, budget2HairPreview],
+      images: [budgetHairPreview],
       tags: ["React", "Inventory", "Real-time", "Retail"],
       isPublic: false,
       clientBased: true
@@ -34,7 +29,7 @@ const Projects = () => {
     {
       title: "Reuben_FarmS",
       description: "Comprehensive Farm End-To-End Activity Manager designed to streamline agricultural operations. Manages crop cycles, inventory, worker scheduling, and financial tracking.",
-      images: [farmManagerPreview, farmManager2Preview, farmManager3Preview],
+      images: [farmManagerPreview],
       tags: ["Agriculture", "Management", "Analytics", "Scheduling"],
       isPublic: false,
       clientBased: true
@@ -42,7 +37,7 @@ const Projects = () => {
     {
       title: "Expensifly.iO",
       description: "Modern expense tracking and management application with intelligent categorization, budget planning, and financial insights for businesses and individuals.",
-      images: [expensiflyPreview, expensifly2Preview],
+      images: [sematicaPreview],
       tags: ["Finance", "Tracking", "Analytics", "Business"],
       liveUrl: "https://sematicake.vercel.app/",
       isPublic: true
@@ -78,11 +73,11 @@ const Projects = () => {
                     <CarouselContent>
                       {project.images.map((image, imgIndex) => (
                         <CarouselItem key={imgIndex}>
-                          <img
-                            src={image}
-                            alt={`${project.title} - Image ${imgIndex + 1}`}
-                            className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
-                          />
+                           <img
+                             src={image}
+                             alt={`${project.title} - Image ${imgIndex + 1}`}
+                             className="w-full h-64 object-contain bg-muted/20 group-hover:scale-105 transition-transform duration-300"
+                           />
                         </CarouselItem>
                       ))}
                     </CarouselContent>
@@ -90,11 +85,11 @@ const Projects = () => {
                     <CarouselNext className="right-2" />
                   </Carousel>
                 ) : (
-                  <img
-                    src={project.images[0]}
-                    alt={project.title}
-                    className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
-                  />
+                   <img
+                     src={project.images[0]}
+                     alt={project.title}
+                     className="w-full h-64 object-contain bg-muted/20 group-hover:scale-105 transition-transform duration-300"
+                   />
                 )}
                 <div className="absolute inset-0 bg-gradient-to-t from-card/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
               </div>
