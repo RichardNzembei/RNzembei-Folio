@@ -45,7 +45,7 @@ const Footer = () => {
               </li>
               <li>
                 <a 
-                  href="https://sematica.vercel.app/" 
+                  href="https://sematicake.vercel.app/" 
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="text-muted-foreground hover:text-primary transition-colors"
@@ -61,7 +61,7 @@ const Footer = () => {
             <h4 className="text-lg font-semibold">Connect</h4>
             <div className="flex gap-4">
               <a
-                href="https://linkedin.com/in/reuben-nzembei"
+                href="https://www.linkedin.com/in/richard-reuben9/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-2 rounded-lg bg-card/30 hover:bg-card/50 hover-glow transition-all"
@@ -70,7 +70,7 @@ const Footer = () => {
                 <Linkedin className="h-5 w-5" />
               </a>
               <a
-                href="https://github.com/reuben-nzembei"
+                href="https://github.com/RichardNzembei"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-2 rounded-lg bg-card/30 hover:bg-card/50 hover-glow transition-all"
@@ -79,7 +79,7 @@ const Footer = () => {
                 <Github className="h-5 w-5" />
               </a>
               <a
-                href="https://wa.me/+254700000000"
+                href="https://wa.me/+254716899396"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-2 rounded-lg bg-card/30 hover:bg-card/50 hover-glow transition-all"
@@ -95,8 +95,7 @@ const Footer = () => {
         <div className="border-t border-border/50 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <div className="flex items-center gap-2 text-muted-foreground">
-              <span>© {currentYear} Reuben Nzembei. Built with</span>
-              <Heart className="h-4 w-4 text-red-500 fill-current" />
+              <span>© {currentYear} Reuben Nzembei. Built </span>
               <span>using React & TypeScript</span>
             </div>
             <div className="text-muted-foreground text-sm">

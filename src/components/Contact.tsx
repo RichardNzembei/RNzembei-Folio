@@ -8,28 +8,28 @@ const Contact = () => {
       icon: MessageCircle,
       title: "WhatsApp",
       description: "Quick responses and real-time communication",
-      link: "https://wa.me/+254700000000",
-      display: "+254 700 000 000"
+      link: "https://wa.me/+254716899396",
+      display: "+254 716899396"
     },
     {
       icon: Linkedin,
       title: "LinkedIn",
       description: "Professional networking and career updates",
-      link: "https://linkedin.com/in/reuben-nzembei",
+      link: "https://www.linkedin.com/in/richard-reuben9/",
       display: "linkedin.com/in/reuben-nzembei"
     },
     {
       icon: Github,
       title: "GitHub",
       description: "Code repositories and open source contributions",
-      link: "https://github.com/reuben-nzembei",
+      link: "https://github.com/RichardNzembei",
       display: "github.com/reuben-nzembei"
     },
     {
       icon: Mail,
       title: "Email",
       description: "For detailed project discussions",
-      link: "mailto:reuben.nzembei@email.com",
+      link: "mailto:richardsonreuben78@gmail.com",
       display: "reuben.nzembei@email.com"
     }
   ];
@@ -87,7 +87,7 @@ const Contact = () => {
                   <Button 
                     variant="hero" 
                     size="lg" 
-                    onClick={() => window.open('https://wa.me/+254700000000', '_blank')}
+                    onClick={() => window.open('https://wa.me/+254716899396', '_blank')}
                   >
                     <MessageCircle className="h-5 w-5 mr-2" />
                     Start a Conversation
@@ -95,7 +95,7 @@ const Contact = () => {
                   <Button 
                     variant="glass" 
                     size="lg"
-                    onClick={() => window.open('mailto:reuben.nzembei@email.com', '_blank')}
+                    onClick={() => window.open('mailto:reuben.richardsonreuben78@gmail.com', '_blank')}
                   >
                     <Mail className="h-5 w-5 mr-2" />
                     Send an Email

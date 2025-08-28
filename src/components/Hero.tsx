@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { ArrowDown, Github, Linkedin, MessageCircle } from "lucide-react";
-import profileImage from "@/assets/reuben-profile.jpg";
+import profileImage from "@/assets/profilr.jpeg";
 import heroBg from "@/assets/tech-hero-bg.jpg";
 
 const Hero = () => {
@@ -67,7 +67,7 @@ const Hero = () => {
           {/* Social Links */}
           <div className="flex justify-center gap-6 animate-fade-up" style={{ animationDelay: '0.6s' }}>
             <a
-              href="https://linkedin.com/in/reuben-nzembei"
+              href="https://www.linkedin.com/in/richard-reuben9/"
               target="_blank"
               rel="noopener noreferrer"
               className="p-3 rounded-full bg-card/30 hover:bg-card/50 hover-glow transition-all"
@@ -75,7 +75,7 @@ const Hero = () => {
               <Linkedin className="h-6 w-6" />
             </a>
             <a
-              href="https://github.com/reuben-nzembei"
+              href="https://github.com/RichardNzembei"
               target="_blank"
               rel="noopener noreferrer"
               className="p-3 rounded-full bg-card/30 hover:bg-card/50 hover-glow transition-all"
@@ -83,7 +83,7 @@ const Hero = () => {
               <Github className="h-6 w-6" />
             </a>
             <a
-              href="https://wa.me/+254700000000"
+              href="https://wa.me/+254716899396"
               target="_blank"
               rel="noopener noreferrer"
               className="p-3 rounded-full bg-card/30 hover:bg-card/50 hover-glow transition-all"
