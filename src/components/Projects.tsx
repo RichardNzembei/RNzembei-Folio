@@ -1,4 +1,3 @@
-
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -80,30 +79,30 @@ const Projects = () => {
   };
 
   return (
-    <section id="projects" className="py-16 px-4 sm:px-6 bg-secondary/20">
-      <div className="container mx-auto">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            <span className="gradient-text">Featured Projects</span>
+    <section id="projects" className="py-12 sm:py-16 px-4 sm:px-6 bg-gray-50 dark:bg-gray-900">
+      <div className="container mx-auto max-w-7xl">
+        <div className="text-center mb-8 sm:mb-12">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-3 sm:mb-4 bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-purple-600">
+            Featured Projects
           </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-sm sm:text-base md:text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto leading-relaxed">
             A showcase of innovative solutions delivering real business value
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
           {projects.map((project, index) => (
             <Card
               key={project.title}
-              className="glass-card hover-glow group overflow-hidden"
+              className="bg-white dark:bg-gray-800 shadow-lg hover:shadow-xl transition-all duration-300 rounded-xl overflow-hidden border border-gray-200 dark:border-gray-700 group"
               style={{ animationDelay: `${index * 0.2}s` }}
             >
-              <div className="relative overflow-hidden h-32 sm:h-40 aspect-w-4 aspect-h-5">
+              <div className="relative overflow-hidden h-48 sm:h-56 md:h-64 aspect-w-4 aspect-h-5">
                 {project.images.length > 1 ? (
                   <Carousel
-                    className="w-full"
+                    className="w-full h-full"
                     opts={{ loop: true, align: "center", dragFree: true }}
-                    plugins={[Autoplay({ delay: 3000, stopOnInteraction: false })]}
+                    plugins={[Autoplay({ delay: 3000, stopOnInteraction: true })]}
                   >
                     <CarouselContent>
                       {project.images.map((image, imgIndex) => (
@@ -111,79 +110,76 @@ const Projects = () => {
                           <img
                             src={image}
                             alt={`${project.title} screenshot ${imgIndex + 1}`}
-                            className="w-full h-full object-contain rounded-lg shadow-sm cursor-pointer bg-gray-100 dark:bg-gray-800 group-hover:scale-105 transition-transform duration-300"
+                            className="w-full h-full object-contain rounded-t-xl shadow-sm cursor-pointer bg-gray-100 dark:bg-gray-800 group-hover:scale-105 transition-transform duration-300"
                             loading="lazy"
                             onClick={() => openLightbox(project.images, imgIndex)}
                           />
                         </CarouselItem>
                       ))}
                     </CarouselContent>
-                    <CarouselPrevious className="left-1 bg-primary/80 text-white w-6 h-6" />
-                    <CarouselNext className="right-1 bg-primary/80 text-white w-6 h-6" />
+                    <CarouselPrevious className="left-2 bg-blue-600/80 dark:bg-blue-700/80 text-white w-6 h-6 sm:w-8 sm:h-8 rounded-full" />
+                    <CarouselNext className="right-2 bg-blue-600/80 dark:bg-blue-700/80 text-white w-6 h-6 sm:w-8 sm:h-8 rounded-full" />
                   </Carousel>
                 ) : (
                   <img
                     src={project.images[0]}
                     alt={`${project.title} screenshot`}
-                    className="w-full h-full object-contain rounded-lg shadow-sm cursor-pointer bg-gray-100 dark:bg-gray-800 group-hover:scale-105 transition-transform duration-300"
+                    className="w-full h-full object-contain rounded-t-xl shadow-sm cursor-pointer bg-gray-100 dark:bg-gray-800 group-hover:scale-105 transition-transform duration-300"
                     loading="lazy"
                     onClick={() => openLightbox(project.images, 0)}
                   />
                 )}
-                <div className="absolute inset-0 bg-gradient-to-t from-card/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+                <div className="absolute inset-0 bg-gradient-to-t from-gray-800/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               </div>
 
-              <CardHeader>
+              <CardHeader className="pb-2 sm:pb-3">
                 <div className="flex justify-between items-start mb-2">
-                  <CardTitle className="text-xl font-bold gradient-text">
+                  <CardTitle className="text-lg sm:text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-purple-600">
                     {project.title}
                   </CardTitle>
                   {project.clientBased && (
-                    <Badge variant="secondary" className="ml-2 text-xs">
+                    <Badge variant="secondary" className="ml-2 text-xs sm:text-sm bg-gray-200 dark:bg-gray-700">
                       Client Project
                     </Badge>
                   )}
                 </div>
-                <p className="text-sm text-muted-foreground leading-relaxed">
+                <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-300 leading-relaxed line-clamp-3">
                   {project.description}
                 </p>
               </CardHeader>
 
-              <CardContent className="space-y-3">
-                <div className="flex flex-wrap gap-2">
+              <CardContent className="space-y-3 sm:space-y-4">
+                <div className="flex flex-wrap gap-1 sm:gap-2">
                   {project.tags.map((tag) => (
-                    <Badge key={tag} variant="outline" className="text-xs">
+                    <Badge key={tag} variant="outline" className="text-xs sm:text-sm border-gray-300 dark:border-gray-600">
                       {tag}
                     </Badge>
                   ))}
                 </div>
 
-                <div className="flex gap-2 pt-3">
+                <div className="flex flex-col sm:flex-row gap-2 sm:gap-3 pt-2 sm:pt-3">
                   {project.isPublic ? (
                     <>
-                      <Button variant="hero" size="sm" asChild className="flex-1 text-xs">
-                        <a
-                          href={project.liveUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          <Eye className="h-3 w-3 mr-1" />
+                      <Button 
+                        variant="hero" 
+                        size="sm" 
+                        asChild 
+                        className="flex-1 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white text-xs sm:text-sm py-2 px-3 sm:px-4"
+                      >
+                        <a href={project.liveUrl} target="_blank" rel="noopener noreferrer">
+                          <Eye className="h-3 w-3 sm:h-4 sm:w-4 mr-1 sm:mr-2" />
                           View Live
                         </a>
                       </Button>
                       {project.mainAppUrl && (
-                        <Button
-                          variant="glass"
-                          size="sm"
-                          asChild
-                          className="flex-1 text-xs"
+                        <Button 
+                          variant="glass" 
+                          size="sm" 
+                          asChild 
+                          className="flex-1 bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 border border-gray-300 dark:border-gray-600 text-xs sm:text-sm py-2 px-3 sm:px-4"
                         >
-                          <a
-                            href={project.mainAppUrl}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                          >
-                            <ExternalLink className="h-3 w-3 mr-1" />
+                          <a href={project.mainAppUrl} target="_blank" rel="noopener noreferrer">
+                            <ExternalLink className="h-3 w-3 sm:h-4 sm:w-4 mr-1 sm:mr-2" />
                             Main App
                           </a>
                         </Button>
@@ -194,9 +190,9 @@ const Projects = () => {
                       onClick={handleContactForDetails}
                       variant="hero"
                       size="sm"
-                      className="flex-1 text-xs"
+                      className="flex-1 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white text-xs sm:text-sm py-2 px-3 sm:px-4"
                     >
-                      <MessageCircle className="h-3 w-3 mr-1" />
+                      <MessageCircle className="h-3 w-3 sm:h-4 sm:w-4 mr-1 sm:mr-2" />
                       Contact for Details
                     </Button>
                   )}
@@ -206,15 +202,15 @@ const Projects = () => {
           ))}
         </div>
 
-        <div className="text-center mt-10">
-          <p className="text-sm text-muted-foreground mb-4">
+        <div className="text-center mt-8 sm:mt-10">
+          <p className="text-sm sm:text-base text-gray-600 dark:text-gray-300 mb-3 sm:mb-4">
             Interested in seeing more projects or discussing a custom solution?
           </p>
           <Button
             onClick={handleContactForDetails}
             variant="glass"
             size="lg"
-            className="text-sm"
+            className="bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 border border-gray-300 dark:border-gray-600 text-sm sm:text-base py-2 sm:py-3 px-4 sm:px-6"
           >
             Let's Discuss Your Project
           </Button>
@@ -234,8 +230,8 @@ const Projects = () => {
             buttonNext: currentImages.length > 1 ? undefined : () => null,
           }}
           styles={{
-            container: { backgroundColor: "rgba(0, 0, 0, 0.9)" },
-            slide: { padding: "16px" },
+            container: { backgroundColor: "rgba(0, 0, 0, 0.95)" },
+            slide: { padding: "8px sm:16px" },
           }}
         />
       )}
