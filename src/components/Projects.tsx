@@ -2,9 +2,6 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-<<<<<<< HEAD
-import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
-=======
 import {
   Carousel,
   CarouselContent,
@@ -12,7 +9,6 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
->>>>>>> 6b433f1 (update 8 files and delete 4 files)
 import { ExternalLink, Eye, MessageCircle } from "lucide-react";
 import Lightbox from "yet-another-react-lightbox";
 import "yet-another-react-lightbox/styles.css";
@@ -36,12 +32,8 @@ const Projects = () => {
   const projects = [
     {
       title: "Sematica",
-<<<<<<< HEAD
-      description: "AI-first Voice + Chat + Commerce automation platform designed for modern businesses. Automates customer engagement, sales, and AI-enhanced support across WhatsApp, Instagram, Web, and voice calls.",
-=======
       description:
         "AI-first Voice + Chat + Commerce automation platform designed for modern businesses. Automates customer engagement, sales, and AI-enhanced support across WhatsApp, Instagram, Web, and voice calls.",
->>>>>>> 6b433f1 (update 8 files and delete 4 files)
       images: [sematicaPreview],
       tags: ["AI", "Automation", "Multi-platform", "Voice AI"],
       liveUrl: "https://sematicake.vercel.app/",
@@ -50,42 +42,24 @@ const Projects = () => {
     },
     {
       title: "Budget Hair – Stock Management",
-<<<<<<< HEAD
-      description: "Custom-built stock management system for Budget Hair, a braids retail shop in Kenya. Features real-time inventory tracking, sales management, and automated restocking alerts.",
-      images: [budgetHairPreview],
-=======
       description:
         "Custom-built stock management system for Budget Hair, a braids retail shop in Kenya. Features real-time inventory tracking, sales management, and automated restocking alerts.",
       images: [budgetHairPreview, budget2HairPreview],
->>>>>>> 6b433f1 (update 8 files and delete 4 files)
       tags: ["React", "Inventory", "Real-time", "Retail"],
       isPublic: false,
       clientBased: true,
     },
     {
       title: "Reuben_FarmS",
-<<<<<<< HEAD
-      description: "Comprehensive Farm End-To-End Activity Manager designed to streamline agricultural operations. Manages crop cycles, inventory, worker scheduling, and financial tracking.",
-      images: [farmManagerPreview],
-=======
       description:
         "Comprehensive Farm End-To-End Activity Manager designed to streamline agricultural operations. Manages crop cycles, inventory, worker scheduling, and financial tracking.",
       images: [farmManagerPreview, farmManager2Preview, farmManager3Preview],
->>>>>>> 6b433f1 (update 8 files and delete 4 files)
       tags: ["Agriculture", "Management", "Analytics", "Scheduling"],
       isPublic: false,
       clientBased: true,
     },
     {
       title: "Expensifly.iO",
-<<<<<<< HEAD
-      description: "Modern expense tracking and management application with intelligent categorization, budget planning, and financial insights for businesses and individuals.",
-      images: [sematicaPreview],
-      tags: ["Finance", "Tracking", "Analytics", "Business"],
-      liveUrl: "https://sematicake.vercel.app/",
-      isPublic: true
-    }
-=======
       description:
         "Modern expense tracking and management application with intelligent categorization, budget planning, and financial insights for businesses and individuals.",
       images: [expensiflyPreview, expensifly2Preview],
@@ -93,7 +67,6 @@ const Projects = () => {
       liveUrl: "https://e-xpensefly-i-o.vercel.app/",
       isPublic: true,
     },
->>>>>>> 6b433f1 (update 8 files and delete 4 files)
   ];
 
   const handleContactForDetails = () => {
@@ -125,31 +98,6 @@ const Projects = () => {
               className="glass-card hover-glow group overflow-hidden"
               style={{ animationDelay: `${index * 0.2}s` }}
             >
-<<<<<<< HEAD
-              <div className="relative overflow-hidden">
-                {project.images.length > 1 ? (
-                  <Carousel className="w-full">
-                    <CarouselContent>
-                      {project.images.map((image, imgIndex) => (
-                        <CarouselItem key={imgIndex}>
-                           <img
-                             src={image}
-                             alt={`${project.title} - Image ${imgIndex + 1}`}
-                             className="w-full h-64 object-contain bg-muted/20 group-hover:scale-105 transition-transform duration-300"
-                           />
-                        </CarouselItem>
-                      ))}
-                    </CarouselContent>
-                    <CarouselPrevious className="left-2" />
-                    <CarouselNext className="right-2" />
-                  </Carousel>
-                ) : (
-                   <img
-                     src={project.images[0]}
-                     alt={project.title}
-                     className="w-full h-64 object-contain bg-muted/20 group-hover:scale-105 transition-transform duration-300"
-                   />
-=======
               <div className="relative overflow-hidden h-32 sm:h-40 aspect-w-4 aspect-h-5">
                 {project.images.length > 1 ? (
                   <Carousel
@@ -181,7 +129,6 @@ const Projects = () => {
                     loading="lazy"
                     onClick={() => openLightbox(project.images, 0)}
                   />
->>>>>>> 6b433f1 (update 8 files and delete 4 files)
                 )}
                 <div className="absolute inset-0 bg-gradient-to-t from-card/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
               </div>
