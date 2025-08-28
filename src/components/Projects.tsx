@@ -79,8 +79,8 @@ const Projects = () => {
   };
 
   return (
-    <section id="projects" className="py-12 sm:py-16 px-4 sm:px-6 bg-gray-50 dark:bg-gray-900">
-      <div className="container mx-auto max-w-7xl">
+    <section id="projects" className="py-12 sm:py-16 px-4 sm:px-6 lg:px-8 bg-gray-100 dark:bg-gray-900">
+      <div className="container mx-auto max-w-6xl">
         <div className="text-center mb-8 sm:mb-12">
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-3 sm:mb-4 bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-purple-600">
             Featured Projects
@@ -94,7 +94,7 @@ const Projects = () => {
           {projects.map((project, index) => (
             <Card
               key={project.title}
-              className="bg-white dark:bg-gray-800 shadow-lg hover:shadow-xl transition-all duration-300 rounded-xl overflow-hidden border border-gray-200 dark:border-gray-700 group"
+              className="bg-white dark:bg-gray-800 shadow-md hover:shadow-lg transition-all duration-300 rounded-lg overflow-visible border border-gray-200 dark:border-gray-700 group"
               style={{ animationDelay: `${index * 0.2}s` }}
             >
               <div className="relative overflow-hidden h-48 sm:h-56 md:h-64 aspect-w-4 aspect-h-5">
@@ -102,7 +102,7 @@ const Projects = () => {
                   <Carousel
                     className="w-full h-full"
                     opts={{ loop: true, align: "center", dragFree: true }}
-                    plugins={[Autoplay({ delay: 3000, stopOnInteraction: true })]}
+                    plugins={[Autoplay({ delay: 3000, stopOnInteraction: true})]}
                   >
                     <CarouselContent>
                       {project.images.map((image, imgIndex) => (
@@ -110,35 +110,38 @@ const Projects = () => {
                           <img
                             src={image}
                             alt={`${project.title} screenshot ${imgIndex + 1}`}
-                            className="w-full h-full object-contain rounded-t-xl shadow-sm cursor-pointer bg-gray-100 dark:bg-gray-800 group-hover:scale-105 transition-transform duration-300"
+                            className="w-full h-full object-cover rounded-t-lg cursor-pointer bg-gray-100 dark:bg-gray-800 group-hover:scale-105 transition-transform duration-300"
                             loading="lazy"
                             onClick={() => openLightbox(project.images, imgIndex)}
                           />
                         </CarouselItem>
                       ))}
                     </CarouselContent>
-                    <CarouselPrevious className="left-2 bg-blue-600/80 dark:bg-blue-700/80 text-white w-6 h-6 sm:w-8 sm:h-8 rounded-full" />
-                    <CarouselNext className="right-2 bg-blue-600/80 dark:bg-blue-700/80 text-white w-6 h-6 sm:w-8 sm:h-8 rounded-full" />
+                    <CarouselPrevious className="left-2 bg-blue-600/90 dark:bg-blue-700/90 text-white w-8 h-8 sm:w-10 sm:h-10 rounded-full hover:bg-blue-700 dark:hover:bg-blue-800 transition-colors duration-200" />
+                    <CarouselNext className="right-2 bg-blue-600/90 dark:bg-blue-700/90 text-white w-8 h-8 sm:w-10 sm:h-10 rounded-full hover:bg-blue-700 dark:hover:bg-blue-800 transition-colors duration-200" />
                   </Carousel>
                 ) : (
                   <img
                     src={project.images[0]}
                     alt={`${project.title} screenshot`}
-                    className="w-full h-full object-contain rounded-t-xl shadow-sm cursor-pointer bg-gray-100 dark:bg-gray-800 group-hover:scale-105 transition-transform duration-300"
+                    className="w-full h-full object-cover rounded-t-lg cursor-pointer bg-gray-100 dark:bg-gray-800 group-hover:scale-105 transition-transform duration-300"
                     loading="lazy"
                     onClick={() => openLightbox(project.images, 0)}
                   />
                 )}
-                <div className="absolute inset-0 bg-gradient-to-t from-gray-800/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                <div className="absolute inset-0 bg-gradient-to-t from-gray-800/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
               </div>
 
-              <CardHeader className="pb-2 sm:pb-3">
+              <CardHeader className="p-4 sm:p-5">
                 <div className="flex justify-between items-start mb-2">
-                  <CardTitle className="text-lg sm:text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-purple-600">
+                  <CardTitle className="text-lg sm:text-xl font-bold text-gray-900 dark:text-white">
                     {project.title}
                   </CardTitle>
                   {project.clientBased && (
-                    <Badge variant="secondary" className="ml-2 text-xs sm:text-sm bg-gray-200 dark:bg-gray-700">
+                    <Badge 
+                      variant="secondary" 
+                      className="ml-2 text-xs sm:text-sm bg-blue-100 dark:bg-blue-900/50 text-blue-800 dark:text-blue-200 px-2 py-1 rounded-md border border-blue-300 dark:border-blue-700"
+                    >
                       Client Project
                     </Badge>
                   )}
@@ -148,26 +151,30 @@ const Projects = () => {
                 </p>
               </CardHeader>
 
-              <CardContent className="space-y-3 sm:space-y-4">
+              <CardContent className="p-4 sm:p-5 space-y-3 sm:space-y-4">
                 <div className="flex flex-wrap gap-1 sm:gap-2">
                   {project.tags.map((tag) => (
-                    <Badge key={tag} variant="outline" className="text-xs sm:text-sm border-gray-300 dark:border-gray-600">
+                    <Badge 
+                      key={tag} 
+                      variant="outline" 
+                      className="text-xs sm:text-sm bg-gray-50 dark:bg-gray-800 border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-200 px-2 py-1 rounded-md"
+                    >
                       {tag}
                     </Badge>
                   ))}
                 </div>
 
-                <div className="flex flex-col sm:flex-row gap-2 sm:gap-3 pt-2 sm:pt-3">
+                <div className="flex flex-col sm:flex-row gap-2 sm:gap-3 pt-2 min-h-[40px] sm:min-h-[48px]">
                   {project.isPublic ? (
                     <>
                       <Button 
                         variant="hero" 
                         size="sm" 
                         asChild 
-                        className="flex-1 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white text-xs sm:text-sm py-2 px-3 sm:px-4"
+                        className="flex-1 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white text-xs sm:text-sm py-2.5 sm:py-3 px-3 sm:px-4 rounded-md shadow-sm hover:shadow-md transition-all duration-200 min-w-[100px]"
                       >
                         <a href={project.liveUrl} target="_blank" rel="noopener noreferrer">
-                          <Eye className="h-3 w-3 sm:h-4 sm:w-4 mr-1 sm:mr-2" />
+                          <Eye className="h-4 w-4 sm:h-5 sm:w-5 mr-1 sm:mr-2" />
                           View Live
                         </a>
                       </Button>
@@ -176,10 +183,10 @@ const Projects = () => {
                           variant="glass" 
                           size="sm" 
                           asChild 
-                          className="flex-1 bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 border border-gray-300 dark:border-gray-600 text-xs sm:text-sm py-2 px-3 sm:px-4"
+                          className="flex-1 bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 border border-gray-300 dark:border-gray-600 text-gray-800 dark:text-gray-100 text-xs sm:text-sm py-2.5 sm:py-3 px-3 sm:px-4 rounded-md shadow-sm hover:shadow-md transition-all duration-200 min-w-[100px]"
                         >
                           <a href={project.mainAppUrl} target="_blank" rel="noopener noreferrer">
-                            <ExternalLink className="h-3 w-3 sm:h-4 sm:w-4 mr-1 sm:mr-2" />
+                            <ExternalLink className="h-4 w-4 sm:h-5 sm:w-5 mr-1 sm:mr-2" />
                             Main App
                           </a>
                         </Button>
@@ -190,9 +197,9 @@ const Projects = () => {
                       onClick={handleContactForDetails}
                       variant="hero"
                       size="sm"
-                      className="flex-1 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white text-xs sm:text-sm py-2 px-3 sm:px-4"
+                      className="flex-1 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white text-xs sm:text-sm py-2.5 sm:py-3 px-3 sm:px-4 rounded-md shadow-sm hover:shadow-md transition-all duration-200 min-w-[100px]"
                     >
-                      <MessageCircle className="h-3 w-3 sm:h-4 sm:w-4 mr-1 sm:mr-2" />
+                      <MessageCircle className="h-4 w-4 sm:h-5 sm:w-5 mr-1 sm:mr-2" />
                       Contact for Details
                     </Button>
                   )}
@@ -203,14 +210,14 @@ const Projects = () => {
         </div>
 
         <div className="text-center mt-8 sm:mt-10">
-          <p className="text-sm sm:text-base text-gray-600 dark:text-gray-300 mb-3 sm:mb-4">
+          <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-300 mb-3 sm:mb-4">
             Interested in seeing more projects or discussing a custom solution?
           </p>
           <Button
             onClick={handleContactForDetails}
             variant="glass"
             size="lg"
-            className="bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 border border-gray-300 dark:border-gray-600 text-sm sm:text-base py-2 sm:py-3 px-4 sm:px-6"
+            className="bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 border border-gray-300 dark:border-gray-600 text-gray-800 dark:text-gray-100 text-sm sm:text-base py-2.5 sm:py-3 px-4 sm:px-6 rounded-md shadow-sm hover:shadow-md transition-all duration-200"
           >
             Let's Discuss Your Project
           </Button>
