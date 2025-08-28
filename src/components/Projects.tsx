@@ -1,26 +1,32 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import { ExternalLink, Eye, MessageCircle } from "lucide-react";
-import sematicaPreview from "@/assets/sematica-preview.jpg";
-import budgetHairPreview from "@/assets/budget-hair-preview.jpg";
-import farmManagerPreview from "@/assets/farm-manager-preview.jpg";
+import sematicaPreview from "@/assets/sematica.png";
+import budgetHairPreview from "@/assets/budget1.jpeg";
+import budget2HairPreview from "@/assets/budget2.jpeg";
+import farmManagerPreview from "@/assets/farm1.jpeg";
+import farmManager2Preview from "@/assets/farm2.jpeg";
+import farmManager3Preview from "@/assets/farm3.jpeg";
+import expensiflyPreview from "@/assets/expe1.jpeg";
+import expensifly2Preview from "@/assets/expe2.jpeg";
 
 const Projects = () => {
   const projects = [
     {
       title: "Sematica",
       description: "AI-first Voice + Chat + Commerce automation platform designed for modern businesses. Automates customer engagement, sales, and AI-enhanced support across WhatsApp, Instagram, Web, and voice calls.",
-      image: sematicaPreview,
+      images: [sematicaPreview],
       tags: ["AI", "Automation", "Multi-platform", "Voice AI"],
-      liveUrl: "https://sematica.vercel.app/",
+      liveUrl: "https://sematicake.vercel.app/",
       mainAppUrl: "https://sematica-main.vercel.app/",
       isPublic: true
     },
     {
       title: "Budget Hair – Stock Management",
       description: "Custom-built stock management system for Budget Hair, a braids retail shop in Kenya. Features real-time inventory tracking, sales management, and automated restocking alerts.",
-      image: budgetHairPreview,
+      images: [budgetHairPreview, budget2HairPreview],
       tags: ["React", "Inventory", "Real-time", "Retail"],
       isPublic: false,
       clientBased: true
@@ -28,18 +34,18 @@ const Projects = () => {
     {
       title: "Reuben_FarmS",
       description: "Comprehensive Farm End-To-End Activity Manager designed to streamline agricultural operations. Manages crop cycles, inventory, worker scheduling, and financial tracking.",
-      image: farmManagerPreview,
+      images: [farmManagerPreview, farmManager2Preview, farmManager3Preview],
       tags: ["Agriculture", "Management", "Analytics", "Scheduling"],
       isPublic: false,
       clientBased: true
     },
     {
-      title: "Expensifly",
+      title: "Expensifly.iO",
       description: "Modern expense tracking and management application with intelligent categorization, budget planning, and financial insights for businesses and individuals.",
-      image: sematicaPreview, // Using placeholder for now
+      images: [expensiflyPreview, expensifly2Preview],
       tags: ["Finance", "Tracking", "Analytics", "Business"],
-      isPublic: false,
-      clientBased: true
+      liveUrl: "https://sematicake.vercel.app/",
+      isPublic: true
     }
   ];
 
@@ -67,11 +73,29 @@ const Projects = () => {
               style={{ animationDelay: `${index * 0.2}s` }}
             >
               <div className="relative overflow-hidden">
-                <img
-                  src={project.image}
-                  alt={project.title}
-                  className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
-                />
+                {project.images.length > 1 ? (
+                  <Carousel className="w-full">
+                    <CarouselContent>
+                      {project.images.map((image, imgIndex) => (
+                        <CarouselItem key={imgIndex}>
+                          <img
+                            src={image}
+                            alt={`${project.title} - Image ${imgIndex + 1}`}
+                            className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
+                          />
+                        </CarouselItem>
+                      ))}
+                    </CarouselContent>
+                    <CarouselPrevious className="left-2" />
+                    <CarouselNext className="right-2" />
+                  </Carousel>
+                ) : (
+                  <img
+                    src={project.images[0]}
+                    alt={project.title}
+                    className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
+                  />
+                )}
                 <div className="absolute inset-0 bg-gradient-to-t from-card/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
               </div>
               
