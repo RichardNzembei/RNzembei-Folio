@@ -1,70 +1,79 @@
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "@/components/ui/carousel";
-import { ExternalLink, Eye, MessageCircle } from "lucide-react";
-import Lightbox from "yet-another-react-lightbox";
-import "yet-another-react-lightbox/styles.css";
-import { useState, useRef } from "react";
-import Autoplay, { AutoplayType } from "embla-carousel-autoplay";
-import sematicaPreview from "@/assets/sematica.png";
-import budgetHairPreview from "@/assets/budget1.jpeg";
-import budget2HairPreview from "@/assets/budget2.jpeg";
-import farmManagerPreview from "@/assets/farm1.jpeg";
-import farmManager2Preview from "@/assets/farm2.jpeg";
-import farmManager3Preview from "@/assets/farm3.jpeg";
-import expensiflyPreview from "@/assets/expe1.jpeg";
-import expensifly2Preview from "@/assets/expe2.jpeg";
+import { ExternalLink, Eye, MessageCircle, ArrowUpRight, Sparkles } from "lucide-react";
+import { useState } from "react";
 
 const Projects = () => {
-  const [isLightboxOpen, setIsLightboxOpen] = useState(false);
-  const [currentImages, setCurrentImages] = useState<{ src: string }[]>([]);
-  const [photoIndex, setPhotoIndex] = useState(0);
-  const autoplayRef = useRef<AutoplayType | null>(null);
+  const [activeProject, setActiveProject] = useState<number | null>(null);
 
   const projects = [
     {
+      id: 1,
+      number: "01",
       title: "Sematica",
+      subtitle: "AI-First Automation Platform",
       description:
-        "AI-first Voice + Chat + Commerce automation platform designed for modern businesses. Automates customer engagement, sales, and AI-enhanced support across WhatsApp, Instagram, Web, and voice calls.",
-      images: [sematicaPreview],
+          "AI-first Voice + Chat + Commerce automation platform designed for modern businesses. Automates customer engagement, sales, and AI-enhanced support across WhatsApp, Instagram, Web, and voice calls.",
+      impact: [
+        { metric: "5x", label: "Faster Response" },
+        { metric: "24/7", label: "Availability" },
+        { metric: "Multi", label: "Platform" }
+      ],
       tags: ["AI", "Automation", "Multi-platform", "Voice AI"],
       liveUrl: "https://sematicake.vercel.app/",
       mainAppUrl: "https://sematica-main.vercel.app/",
       isPublic: true,
+      year: "2024"
     },
     {
-      title: "Budget Hair – Stock Management",
+      id: 2,
+      number: "02",
+      title: "Budget Hair",
+      subtitle: "Stock Management System",
       description:
-        "Custom-built stock management system for Budget Hair, a braids retail shop in Kenya. Features real-time inventory tracking, sales management, and automated restocking alerts.",
-      images: [budgetHairPreview, budget2HairPreview],
+          "Custom-built stock management system for Budget Hair, a braids retail shop in Kenya. Features real-time inventory tracking, sales management, and automated restocking alerts.",
+      impact: [
+        { metric: "Real-time", label: "Tracking" },
+        { metric: "Auto", label: "Restocking" },
+        { metric: "Smart", label: "Analytics" }
+      ],
       tags: ["React", "Inventory", "Real-time", "Retail"],
       isPublic: false,
       clientBased: true,
+      year: "2024"
     },
     {
+      id: 3,
+      number: "03",
       title: "Reuben_FarmS",
+      subtitle: "Agricultural Operations Manager",
       description:
-        "Comprehensive Farm End-To-End Activity Manager designed to streamline agricultural operations. Manages crop cycles, inventory, worker scheduling, and financial tracking.",
-      images: [farmManagerPreview, farmManager2Preview, farmManager3Preview],
+          "Comprehensive Farm End-To-End Activity Manager designed to streamline agricultural operations. Manages crop cycles, inventory, worker scheduling, and financial tracking.",
+      impact: [
+        { metric: "360°", label: "Farm View" },
+        { metric: "Smart", label: "Scheduling" },
+        { metric: "Full", label: "Tracking" }
+      ],
       tags: ["Agriculture", "Management", "Analytics", "Scheduling"],
       isPublic: false,
       clientBased: true,
+      year: "2023"
     },
     {
+      id: 4,
+      number: "04",
       title: "Expensifly.iO",
+      subtitle: "Expense Management Platform",
       description:
-        "Modern expense tracking and management application with intelligent categorization, budget planning, and financial insights for businesses and individuals.",
-      images: [expensiflyPreview, expensifly2Preview],
+          "Modern expense tracking and management application with intelligent categorization, budget planning, and financial insights for businesses and individuals.",
+      impact: [
+        { metric: "Smart", label: "Categorization" },
+        { metric: "Budget", label: "Planning" },
+        { metric: "Deep", label: "Insights" }
+      ],
       tags: ["Finance", "Tracking", "Analytics", "Business"],
       liveUrl: "https://e-xpensefly-i-o.vercel.app/",
       isPublic: true,
+      year: "2024"
     },
   ];
 
@@ -72,177 +81,178 @@ const Projects = () => {
     document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
   };
 
-  const openLightbox = (images: string[], index: number) => {
-    setCurrentImages(images.map((src) => ({ src })));
-    setPhotoIndex(index);
-    setIsLightboxOpen(true);
-  };
-
   return (
-    <section id="projects" className="py-12 sm:py-16 px-4 sm:px-6 lg:px-8 bg-gray-100 dark:bg-gray-900">
-      <div className="container mx-auto max-w-6xl">
-        <div className="text-center mb-8 sm:mb-12">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-3 sm:mb-4 bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-purple-600">
-            Featured Projects
-          </h2>
-          <p className="text-sm sm:text-base md:text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto leading-relaxed">
-            A showcase of innovative solutions delivering real business value
-          </p>
-        </div>
+      <section id="projects" className="py-20 sm:py-32 px-6 bg-white dark:bg-black">
+        <div className="container mx-auto max-w-7xl">
+          {/* Header */}
+          <div className="text-center mb-20 sm:mb-32">
+            <div className="inline-flex items-center gap-2 mb-6 px-4 py-2 rounded-full border border-gray-200 dark:border-gray-800">
+              <Sparkles className="h-4 w-4 text-gray-600 dark:text-gray-400" />
+              <span className="text-sm font-light text-gray-600 dark:text-gray-400">Featured Work</span>
+            </div>
+            <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extralight mb-8 text-black dark:text-white tracking-tight leading-tight">
+              Selected Projects
+            </h2>
+            <p className="text-lg sm:text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto font-light leading-relaxed">
+              Crafting digital experiences that drive real business value
+            </p>
+          </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
-          {projects.map((project, index) => (
-            <Card
-              key={project.title}
-              className="bg-white dark:bg-gray-800 shadow-md hover:shadow-lg transition-all duration-300 rounded-lg overflow-visible border border-gray-200 dark:border-gray-700 group"
-              style={{ animationDelay: `${index * 0.2}s` }}
+          {/* Projects List */}
+          <div className="space-y-0">
+            {projects.map((project, index) => (
+                <div
+                    key={project.id}
+                    onMouseEnter={() => setActiveProject(project.id)}
+                    onMouseLeave={() => setActiveProject(null)}
+                    className="group border-t border-gray-200 dark:border-gray-800 last:border-b transition-all duration-500"
+                    style={{
+                      animationDelay: `${index * 0.1}s`,
+                      animation: 'fadeIn 0.8s ease-out forwards',
+                      opacity: 0
+                    }}
+                >
+                  <div className="py-12 sm:py-16 lg:py-20 transition-all duration-500 group-hover:bg-gray-50 dark:group-hover:bg-gray-950">
+                    <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
+                      {/* Left: Number & Year */}
+                      <div className="lg:col-span-2 flex lg:flex-col gap-4 lg:gap-8">
+                        <div>
+                          <div className="text-6xl sm:text-7xl font-extralight text-gray-300 dark:text-gray-700 group-hover:text-black dark:group-hover:text-white transition-all duration-500">
+                            {project.number}
+                          </div>
+                        </div>
+                        <div className="lg:mt-auto">
+                          <div className="text-sm font-light text-gray-400 dark:text-gray-600">
+                            {project.year}
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* Center: Content */}
+                      <div className="lg:col-span-6 space-y-6">
+                        <div>
+                          <div className="flex items-start justify-between mb-3">
+                            <div>
+                              <h3 className="text-3xl sm:text-4xl font-light text-black dark:text-white tracking-tight mb-2">
+                                {project.title}
+                              </h3>
+                              <p className="text-base sm:text-lg text-gray-600 dark:text-gray-400 font-light">
+                                {project.subtitle}
+                              </p>
+                            </div>
+                            {project.clientBased && (
+                                <span className="text-xs bg-transparent border border-gray-300 dark:border-gray-700 text-gray-600 dark:text-gray-400 px-3 py-1.5 rounded-full font-light whitespace-nowrap">
+                            Client Project
+                          </span>
+                            )}
+                          </div>
+
+                          <p className="text-base text-gray-600 dark:text-gray-400 leading-relaxed font-light">
+                            {project.description}
+                          </p>
+                        </div>
+
+                        {/* Impact Metrics */}
+                        <div className="grid grid-cols-3 gap-4 pt-4">
+                          {project.impact.map((item, idx) => (
+                              <div key={idx} className="text-center lg:text-left">
+                                <div className="text-2xl sm:text-3xl font-light text-black dark:text-white mb-1">
+                                  {item.metric}
+                                </div>
+                                <div className="text-xs text-gray-500 dark:text-gray-500 font-light">
+                                  {item.label}
+                                </div>
+                              </div>
+                          ))}
+                        </div>
+
+                        {/* Tags */}
+                        <div className="flex flex-wrap gap-2 pt-2">
+                          {project.tags.map((tag) => (
+                              <span
+                                  key={tag}
+                                  className="text-xs bg-transparent border border-gray-200 dark:border-gray-800 text-gray-600 dark:text-gray-400 px-3 py-1.5 rounded-full font-light"
+                              >
+                          {tag}
+                        </span>
+                          ))}
+                        </div>
+                      </div>
+
+                      {/* Right: Actions */}
+                      <div className="lg:col-span-4 flex flex-col gap-3 lg:pt-2">
+                        {project.isPublic ? (
+                            <>
+                              <Button
+                                  asChild
+                                  className="w-full bg-black dark:bg-white text-white dark:text-black hover:bg-gray-800 dark:hover:bg-gray-200 text-sm py-6 rounded-full border-0 font-light tracking-wide transition-all duration-300 group/btn"
+                              >
+                                <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center">
+                                  <Eye className="h-4 w-4 mr-2" />
+                                  View Live
+                                  <ArrowUpRight className="h-4 w-4 ml-2 opacity-0 group-hover/btn:opacity-100 transition-opacity" />
+                                </a>
+                              </Button>
+                              {project.mainAppUrl && (
+                                  <Button
+                                      asChild
+                                      className="w-full bg-white dark:bg-black text-black dark:text-white hover:bg-gray-100 dark:hover:bg-gray-900 border border-gray-300 dark:border-gray-700 text-sm py-6 rounded-full font-light tracking-wide transition-all duration-300 group/btn"
+                                  >
+                                    <a href={project.mainAppUrl} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center">
+                                      <ExternalLink className="h-4 w-4 mr-2" />
+                                      Main App
+                                      <ArrowUpRight className="h-4 w-4 ml-2 opacity-0 group-hover/btn:opacity-100 transition-opacity" />
+                                    </a>
+                                  </Button>
+                              )}
+                            </>
+                        ) : (
+                            <Button
+                                onClick={handleContactForDetails}
+                                className="w-full bg-black dark:bg-white text-white dark:text-black hover:bg-gray-800 dark:hover:bg-gray-200 text-sm py-6 rounded-full border-0 font-light tracking-wide transition-all duration-300 group/btn"
+                            >
+                              <MessageCircle className="h-4 w-4 mr-2" />
+                              Contact for Details
+                              <ArrowUpRight className="h-4 w-4 ml-2 opacity-0 group-hover/btn:opacity-100 transition-opacity" />
+                            </Button>
+                        )}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+            ))}
+          </div>
+
+          {/* CTA Section */}
+          <div className="text-center mt-32 pt-20 border-t border-gray-200 dark:border-gray-800">
+            <h3 className="text-3xl sm:text-4xl font-light mb-6 text-black dark:text-white tracking-tight">
+              Have a project in mind?
+            </h3>
+            <p className="text-base sm:text-lg text-gray-600 dark:text-gray-400 mb-10 font-light max-w-xl mx-auto">
+              Let's create something exceptional together
+            </p>
+            <Button
+                onClick={handleContactForDetails}
+                className="bg-white dark:bg-black text-black dark:text-white hover:bg-gray-100 dark:hover:bg-gray-900 border border-gray-300 dark:border-gray-700 text-base py-6 px-12 rounded-full font-light tracking-wide transition-all duration-300"
             >
-              <div className="relative overflow-hidden h-48 sm:h-56 md:h-64 aspect-w-4 aspect-h-5">
-                {project.images.length > 1 ? (
-                  <Carousel
-                    className="w-full h-full"
-                    opts={{ loop: true, align: "center", dragFree: true }}
-                    plugins={[Autoplay({ delay: 3000, stopOnInteraction: true})]}
-                  >
-                    <CarouselContent>
-                      {project.images.map((image, imgIndex) => (
-                        <CarouselItem key={imgIndex}>
-                          <img
-                            src={image}
-                            alt={`${project.title} screenshot ${imgIndex + 1}`}
-                            className="w-full h-full object-cover rounded-t-lg cursor-pointer bg-gray-100 dark:bg-gray-800 group-hover:scale-105 transition-transform duration-300"
-                            loading="lazy"
-                            onClick={() => openLightbox(project.images, imgIndex)}
-                          />
-                        </CarouselItem>
-                      ))}
-                    </CarouselContent>
-                    <CarouselPrevious className="left-2 bg-blue-600/90 dark:bg-blue-700/90 text-white w-8 h-8 sm:w-10 sm:h-10 rounded-full hover:bg-blue-700 dark:hover:bg-blue-800 transition-colors duration-200" />
-                    <CarouselNext className="right-2 bg-blue-600/90 dark:bg-blue-700/90 text-white w-8 h-8 sm:w-10 sm:h-10 rounded-full hover:bg-blue-700 dark:hover:bg-blue-800 transition-colors duration-200" />
-                  </Carousel>
-                ) : (
-                  <img
-                    src={project.images[0]}
-                    alt={`${project.title} screenshot`}
-                    className="w-full h-full object-cover rounded-t-lg cursor-pointer bg-gray-100 dark:bg-gray-800 group-hover:scale-105 transition-transform duration-300"
-                    loading="lazy"
-                    onClick={() => openLightbox(project.images, 0)}
-                  />
-                )}
-                <div className="absolute inset-0 bg-gradient-to-t from-gray-800/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
-              </div>
-
-              <CardHeader className="p-4 sm:p-5">
-                <div className="flex justify-between items-start mb-2">
-                  <CardTitle className="text-lg sm:text-xl font-bold text-gray-900 dark:text-white">
-                    {project.title}
-                  </CardTitle>
-                  {project.clientBased && (
-                    <Badge 
-                      variant="secondary" 
-                      className="ml-2 text-xs sm:text-sm bg-blue-100 dark:bg-blue-900/50 text-blue-800 dark:text-blue-200 px-2 py-1 rounded-md border border-blue-300 dark:border-blue-700"
-                    >
-                      Client Project
-                    </Badge>
-                  )}
-                </div>
-                <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-300 leading-relaxed line-clamp-3">
-                  {project.description}
-                </p>
-              </CardHeader>
-
-              <CardContent className="p-4 sm:p-5 space-y-3 sm:space-y-4">
-                <div className="flex flex-wrap gap-1 sm:gap-2">
-                  {project.tags.map((tag) => (
-                    <Badge 
-                      key={tag} 
-                      variant="outline" 
-                      className="text-xs sm:text-sm bg-gray-50 dark:bg-gray-800 border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-200 px-2 py-1 rounded-md"
-                    >
-                      {tag}
-                    </Badge>
-                  ))}
-                </div>
-
-                <div className="flex flex-col sm:flex-row gap-2 sm:gap-3 pt-2 min-h-[40px] sm:min-h-[48px]">
-                  {project.isPublic ? (
-                    <>
-                      <Button 
-                        variant="hero" 
-                        size="sm" 
-                        asChild 
-                        className="flex-1 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white text-xs sm:text-sm py-2.5 sm:py-3 px-3 sm:px-4 rounded-md shadow-sm hover:shadow-md transition-all duration-200 min-w-[100px]"
-                      >
-                        <a href={project.liveUrl} target="_blank" rel="noopener noreferrer">
-                          <Eye className="h-4 w-4 sm:h-5 sm:w-5 mr-1 sm:mr-2" />
-                          View Live
-                        </a>
-                      </Button>
-                      {project.mainAppUrl && (
-                        <Button 
-                          variant="glass" 
-                          size="sm" 
-                          asChild 
-                          className="flex-1 bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 border border-gray-300 dark:border-gray-600 text-gray-800 dark:text-gray-100 text-xs sm:text-sm py-2.5 sm:py-3 px-3 sm:px-4 rounded-md shadow-sm hover:shadow-md transition-all duration-200 min-w-[100px]"
-                        >
-                          <a href={project.mainAppUrl} target="_blank" rel="noopener noreferrer">
-                            <ExternalLink className="h-4 w-4 sm:h-5 sm:w-5 mr-1 sm:mr-2" />
-                            Main App
-                          </a>
-                        </Button>
-                      )}
-                    </>
-                  ) : (
-                    <Button
-                      onClick={handleContactForDetails}
-                      variant="hero"
-                      size="sm"
-                      className="flex-1 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white text-xs sm:text-sm py-2.5 sm:py-3 px-3 sm:px-4 rounded-md shadow-sm hover:shadow-md transition-all duration-200 min-w-[100px]"
-                    >
-                      <MessageCircle className="h-4 w-4 sm:h-5 sm:w-5 mr-1 sm:mr-2" />
-                      Contact for Details
-                    </Button>
-                  )}
-                </div>
-              </CardContent>
-            </Card>
-          ))}
+              Start a Conversation
+            </Button>
+          </div>
         </div>
 
-        <div className="text-center mt-8 sm:mt-10">
-          <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-300 mb-3 sm:mb-4">
-            Interested in seeing more projects or discussing a custom solution?
-          </p>
-          <Button
-            onClick={handleContactForDetails}
-            variant="glass"
-            size="lg"
-            className="bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 border border-gray-300 dark:border-gray-600 text-gray-800 dark:text-gray-100 text-sm sm:text-base py-2.5 sm:py-3 px-4 sm:px-6 rounded-md shadow-sm hover:shadow-md transition-all duration-200"
-          >
-            Let's Discuss Your Project
-          </Button>
-        </div>
-      </div>
-
-      {isLightboxOpen && (
-        <Lightbox
-          slides={currentImages}
-          open={isLightboxOpen}
-          index={photoIndex}
-          close={() => setIsLightboxOpen(false)}
-          on={{ view: ({ index }: { index: number }) => setPhotoIndex(index) }}
-          carousel={{ finite: currentImages.length === 1 }}
-          render={{
-            buttonPrev: currentImages.length > 1 ? undefined : () => null,
-            buttonNext: currentImages.length > 1 ? undefined : () => null,
-          }}
-          styles={{
-            container: { backgroundColor: "rgba(0, 0, 0, 0.95)" },
-            slide: { padding: "8px sm:16px" },
-          }}
-        />
-      )}
-    </section>
+        <style jsx>{`
+        @keyframes fadeIn {
+          from {
+            opacity: 0;
+            transform: translateY(20px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+      `}</style>
+      </section>
   );
 };
 

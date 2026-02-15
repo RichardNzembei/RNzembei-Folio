@@ -1,4 +1,4 @@
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent } from "@/components/ui/card";
 import { Code, Database, Globe, Smartphone, Search, Settings } from "lucide-react";
 
 const Services = () => {
@@ -36,42 +36,57 @@ const Services = () => {
   ];
 
   return (
-    <section className="py-12 sm:py-16 md:py-20 px-4 sm:px-6 bg-gray-50 dark:bg-gray-900">
-      <div className="container mx-auto max-w-7xl">
-        <div className="text-center mb-8 sm:mb-12 md:mb-16">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-3 sm:mb-4 md:mb-6 bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-purple-600">
-            Services & Expertise
-          </h2>
-          <p className="text-sm sm:text-base md:text-lg lg:text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed">
-            Comprehensive technology solutions tailored to your business needs
-          </p>
+      <section className="py-20 sm:py-32 px-6 bg-white dark:bg-black">
+        <div className="container mx-auto max-w-7xl">
+          <div className="text-center mb-20 sm:mb-28">
+            <h2 className="text-4xl sm:text-5xl md:text-6xl font-light mb-6 text-black dark:text-white tracking-tight">
+              What I Do
+            </h2>
+            <p className="text-lg sm:text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto font-light">
+              Comprehensive solutions for modern businesses
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-gray-200 dark:bg-gray-800 border border-gray-200 dark:border-gray-800">
+            {services.map((service, index) => (
+                <Card
+                    key={service.title}
+                    className="bg-white dark:bg-black border-0 rounded-none group transition-all duration-500 hover:bg-gray-50 dark:hover:bg-gray-950"
+                    style={{
+                      animationDelay: `${index * 0.1}s`,
+                      animation: 'fadeIn 0.6s ease-out forwards',
+                      opacity: 0
+                    }}
+                >
+                  <CardContent className="p-8 sm:p-12 flex flex-col items-center text-center h-full">
+                    <div className="mb-6 transition-transform duration-500 group-hover:scale-110">
+                      <service.icon className="h-12 w-12 text-black dark:text-white stroke-[1.5]" />
+                    </div>
+                    <h3 className="text-xl sm:text-2xl font-light mb-4 text-black dark:text-white tracking-tight">
+                      {service.title}
+                    </h3>
+                    <p className="text-sm sm:text-base text-gray-600 dark:text-gray-400 leading-relaxed font-light">
+                      {service.description}
+                    </p>
+                  </CardContent>
+                </Card>
+            ))}
+          </div>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
-          {services.map((service, index) => (
-            <Card 
-              key={service.title} 
-              className="bg-white dark:bg-gray-800 shadow-lg hover:shadow-xl transition-all duration-300 rounded-xl border border-gray-200 dark:border-gray-700 group hover:scale-105"
-              style={{ animationDelay: `${index * 0.1}s` }}
-            >
-              <CardHeader className="text-center pb-3 sm:pb-4">
-                <div className="mx-auto mb-3 sm:mb-4 p-2 sm:p-3 rounded-lg bg-gradient-to-br from-blue-600 to-purple-600 w-fit group-hover:scale-110 transition-transform duration-300">
-                  <service.icon className="h-6 w-6 sm:h-8 sm:w-8 text-white" />
-                </div>
-                <CardTitle className="text-lg sm:text-xl md:text-2xl font-semibold text-gray-900 dark:text-white">
-                  {service.title}
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-sm sm:text-base text-gray-600 dark:text-gray-300 text-center leading-relaxed line-clamp-3">
-                  {service.description}
-                </p>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
-      </div>
-    </section>
+        <style jsx>{`
+        @keyframes fadeIn {
+          from {
+            opacity: 0;
+            transform: translateY(20px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+      `}</style>
+      </section>
   );
 };
 

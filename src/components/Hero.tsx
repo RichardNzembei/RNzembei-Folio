@@ -1,7 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { ArrowDown, Github, Linkedin, MessageCircle } from "lucide-react";
-import profileImage from "@/assets/profilr.jpeg";
-import heroBg from "@/assets/tech-hero-bg.jpg";
+import profileImage from "@/assets/profile.jpeg";
 
 const Hero = () => {
   const scrollToProjects = () => {
@@ -13,106 +12,133 @@ const Hero = () => {
   };
 
   return (
-    <section 
-      className="min-h-[80vh] sm:min-h-screen flex items-center justify-center relative overflow-hidden bg-gray-900"
-      style={{
-        backgroundImage: `linear-gradient(rgba(34, 39, 46, 0.85), rgba(34, 39, 46, 0.95)), url(${heroBg})`,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        backgroundAttachment: 'fixed',
-        backgroundRepeat: 'no-repeat'
-      }}
-    >
-      {/* Animated background elements */}
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-10 sm:top-20 left-10 sm:left-20 w-48 sm:w-72 h-48 sm:h-72 bg-blue-500/20 rounded-full blur-2xl sm:blur-3xl animate-float"></div>
-        <div className="absolute bottom-10 sm:bottom-20 right-10 sm:right-20 w-64 sm:w-96 h-64 sm:h-96 bg-purple-500/20 rounded-full blur-2xl sm:blur-3xl animate-float" style={{ animationDelay: '2s' }}></div>
-      </div>
-      
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 z-10">
-        <div className="text-center max-w-4xl mx-auto">
-          {/* Profile Image */}
-          <div className="mb-6 sm:mb-8 animate-fade-up">
-            <img
-              src={profileImage}
-              alt="Reuben Nzembei"
-              className="w-24 h-24 sm:w-32 sm:h-32 rounded-full mx-auto mb-4 sm:mb-6 border-4 border-blue-500/30 hover:scale-105 transition-transform duration-300 object-cover"
-            />
-          </div>
+      <section className="min-h-screen flex items-center justify-center relative overflow-hidden bg-white dark:bg-black">
+        {/* Subtle gradient overlay */}
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-gray-50 dark:to-gray-950 opacity-60"></div>
 
-          {/* Main Content */}
-          <div className="animate-fade-up" style={{ animationDelay: '0.2s' }}>
-            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-4 sm:mb-6 bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-purple-600">
-              Reuben Nzembei
-            </h1>
-            <h2 className="text-xl sm:text-2xl md:text-3xl text-gray-300 dark:text-gray-200 mb-6 sm:mb-8 font-medium">
-              Fullstack Software Engineer
-            </h2>
-            <p className="text-base sm:text-lg md:text-xl text-gray-400 dark:text-gray-300 mb-8 sm:mb-12 max-w-3xl mx-auto leading-relaxed">
-              Specializing in web development, enterprise systems, mobile apps, web scraping, 
-              web design, and system management. Building innovative solutions that drive business success.
-            </p>
-          </div>
+        <div className="container mx-auto px-6 lg:px-8 z-10 py-20">
+          <div className="text-center max-w-5xl mx-auto">
+            {/* Profile Image */}
+            <div className="mb-12 animate-fade-in">
+              <img
+                  src={profileImage}
+                  alt="Reuben Nzembei"
+                  className="w-32 h-32 sm:w-40 sm:h-40 rounded-full mx-auto mb-8 border border-gray-200 dark:border-gray-800 object-cover transition-all duration-700"
+              />
+            </div>
 
-          {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center mb-8 sm:mb-12 animate-fade-up" style={{ animationDelay: '0.4s' }}>
-            <Button 
-              onClick={scrollToProjects} 
-              variant="hero" 
-              size="lg" 
-              className="bg-gradient-to-r from-blue-600 to-purple-600 text-white hover:from-blue-700 hover:to-purple-700 transition-all duration-200 text-sm sm:text-base py-2 sm:py-3 px-4 sm:px-6 group"
-            >
-              View My Work
-              <ArrowDown className="ml-2 h-4 w-4 sm:h-5 sm:w-5 group-hover:translate-y-1 transition-transform" />
-            </Button>
-            <Button 
-              onClick={scrollToContact} 
-              variant="glass" 
-              size="lg"
-              className="bg-gray-100 dark:bg-gray-800 text-gray-900 dark:text-white hover:bg-gray-200 dark:hover:bg-gray-700 transition-all duration-200 border border-gray-300 dark:border-gray-600 text-sm sm:text-base py-2 sm:py-3 px-4 sm:px-6"
-            >
-              Get In Touch
-            </Button>
-          </div>
+            {/* Main Content */}
+            <div className="space-y-8 animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
+              <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-extralight mb-6 text-black dark:text-white tracking-tight leading-tight">
+                Reuben Nzembei
+              </h1>
+              <h2 className="text-2xl sm:text-3xl md:text-4xl text-gray-600 dark:text-gray-400 font-light tracking-wide">
+                Fullstack Software Engineer
+              </h2>
+              <p className="text-lg sm:text-xl text-gray-500 dark:text-gray-500 max-w-3xl mx-auto leading-relaxed font-light">
+                Crafting elegant digital solutions that drive innovation and business growth
+              </p>
+            </div>
 
-          {/* Social Links */}
-          <div className="flex justify-center gap-4 sm:gap-6 animate-fade-up" style={{ animationDelay: '0.6s' }}>
-            <a
-              href="https://www.linkedin.com/in/richard-reuben9/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="p-2 sm:p-3 rounded-full bg-gray-800/50 hover:bg-gray-700/50 hover:scale-105 transition-all duration-200"
-              aria-label="LinkedIn"
-            >
-              <Linkedin className="h-5 w-5 sm:h-6 sm:w-6 text-gray-300" />
-            </a>
-            <a
-              href="https://github.com/RichardNzembei"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="p-2 sm:p-3 rounded-full bg-gray-800/50 hover:bg-gray-700/50 hover:scale-105 transition-all duration-200"
-              aria-label="GitHub"
-            >
-              <Github className="h-5 w-5 sm:h-6 sm:w-6 text-gray-300" />
-            </a>
-            <a
-              href="https://wa.me/+254716899396"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="p-2 sm:p-3 rounded-full bg-gray-800/50 hover:bg-gray-700/50 hover:scale-105 transition-all duration-200"
-              aria-label="WhatsApp"
-            >
-              <MessageCircle className="h-5 w-5 sm:h-6 sm:w-6 text-gray-300" />
-            </a>
+            {/* CTA Buttons */}
+            <div className="flex flex-col sm:flex-row gap-4 justify-center mt-16 animate-fade-in-up" style={{ animationDelay: '0.4s' }}>
+              <Button
+                  onClick={scrollToProjects}
+                  className="bg-black dark:bg-white text-white dark:text-black hover:bg-gray-800 dark:hover:bg-gray-200 transition-all duration-300 text-base py-6 px-10 rounded-full font-light tracking-wide group border-0"
+              >
+                View Work
+                <ArrowDown className="ml-2 h-5 w-5 group-hover:translate-y-1 transition-transform" />
+              </Button>
+              <Button
+                  onClick={scrollToContact}
+                  className="bg-white dark:bg-black text-black dark:text-white hover:bg-gray-100 dark:hover:bg-gray-900 transition-all duration-300 border border-gray-300 dark:border-gray-700 text-base py-6 px-10 rounded-full font-light tracking-wide"
+              >
+                Get In Touch
+              </Button>
+            </div>
+
+            {/* Social Links */}
+            <div className="flex justify-center gap-8 mt-20 animate-fade-in-up" style={{ animationDelay: '0.6s' }}>
+              <a
+                  href="https://www.linkedin.com/in/richard-reuben9/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-3 rounded-full border border-gray-300 dark:border-gray-700 hover:border-black dark:hover:border-white hover:scale-110 transition-all duration-300"
+                  aria-label="LinkedIn"
+              >
+                <Linkedin className="h-6 w-6 text-gray-600 dark:text-gray-400" />
+              </a>
+              <a
+                  href="https://github.com/RichardNzembei"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-3 rounded-full border border-gray-300 dark:border-gray-700 hover:border-black dark:hover:border-white hover:scale-110 transition-all duration-300"
+                  aria-label="GitHub"
+              >
+                <Github className="h-6 w-6 text-gray-600 dark:text-gray-400" />
+              </a>
+              <a
+                  href="https://wa.me/+254716899396"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-3 rounded-full border border-gray-300 dark:border-gray-700 hover:border-black dark:hover:border-white hover:scale-110 transition-all duration-300"
+                  aria-label="WhatsApp"
+              >
+                <MessageCircle className="h-6 w-6 text-gray-600 dark:text-gray-400" />
+              </a>
+            </div>
           </div>
         </div>
-      </div>
 
-      {/* Scroll indicator */}
-      <div className="absolute bottom-4 sm:bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-        <ArrowDown className="h-5 w-5 sm:h-6 sm:w-6 text-gray-400" />
-      </div>
-    </section>
+        {/* Scroll indicator */}
+        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce-slow">
+          <ArrowDown className="h-6 w-6 text-gray-400 dark:text-gray-600" />
+        </div>
+
+        <style jsx>{`
+        @keyframes fade-in {
+          from {
+            opacity: 0;
+          }
+          to {
+            opacity: 1;
+          }
+        }
+        
+        @keyframes fade-in-up {
+          from {
+            opacity: 0;
+            transform: translateY(30px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+
+        @keyframes bounce-slow {
+          0%, 100% {
+            transform: translateY(0);
+          }
+          50% {
+            transform: translateY(-10px);
+          }
+        }
+
+        .animate-fade-in {
+          animation: fade-in 1s ease-out forwards;
+        }
+
+        .animate-fade-in-up {
+          animation: fade-in-up 1s ease-out forwards;
+          opacity: 0;
+        }
+
+        .animate-bounce-slow {
+          animation: bounce-slow 2s ease-in-out infinite;
+        }
+      `}</style>
+      </section>
   );
 };
 
