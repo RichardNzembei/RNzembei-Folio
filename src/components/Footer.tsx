@@ -45,16 +45,6 @@ const Footer = () => {
                     Contact
                   </a>
                 </li>
-                <li>
-                  <a
-                      href="https://sematicake.vercel.app/"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-sm text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors duration-200 font-light"
-                  >
-                    Sematica Platform
-                  </a>
-                </li>
               </ul>
             </div>
 

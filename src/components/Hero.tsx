@@ -13,12 +13,9 @@ const Hero = () => {
 
   return (
       <section className="min-h-screen flex items-center justify-center relative overflow-hidden bg-white dark:bg-black">
-        {/* Subtle gradient overlay */}
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-gray-50 dark:to-gray-950 opacity-60"></div>
-
         <div className="container mx-auto px-6 lg:px-8 z-10 py-20">
           <div className="text-center max-w-5xl mx-auto">
-            {/* Profile Image */}
             <div className="mb-12 animate-fade-in">
               <img
                   src={profileImage}
@@ -26,8 +23,6 @@ const Hero = () => {
                   className="w-32 h-32 sm:w-40 sm:h-40 rounded-full mx-auto mb-8 border border-gray-200 dark:border-gray-800 object-cover transition-all duration-700"
               />
             </div>
-
-            {/* Main Content */}
             <div className="space-y-8 animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
               <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-extralight mb-6 text-black dark:text-white tracking-tight leading-tight">
                 Reuben Nzembei
@@ -39,8 +34,6 @@ const Hero = () => {
                 Crafting elegant digital solutions that drive innovation and business growth
               </p>
             </div>
-
-            {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4 justify-center mt-16 animate-fade-in-up" style={{ animationDelay: '0.4s' }}>
               <Button
                   onClick={scrollToProjects}
@@ -56,8 +49,6 @@ const Hero = () => {
                 Get In Touch
               </Button>
             </div>
-
-            {/* Social Links */}
             <div className="flex justify-center gap-8 mt-20 animate-fade-in-up" style={{ animationDelay: '0.6s' }}>
               <a
                   href="https://www.linkedin.com/in/richard-reuben9/"
@@ -89,12 +80,9 @@ const Hero = () => {
             </div>
           </div>
         </div>
-
-        {/* Scroll indicator */}
         <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce-slow">
           <ArrowDown className="h-6 w-6 text-gray-400 dark:text-gray-600" />
         </div>
-
         <style jsx>{`
         @keyframes fade-in {
           from {

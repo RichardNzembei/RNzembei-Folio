@@ -31,7 +31,7 @@ const Contact = () => {
   ];
 
   return (
-      <section id="contact" className="py-20 sm:py-32 px-6 bg-white dark:bg-black">
+      <section id="contact" className="py-6 sm:py-10 px-6 bg-white dark:bg-black">
         <div className="container mx-auto max-w-5xl">
           <div className="text-center mb-20 sm:mb-28">
             <h2 className="text-4xl sm:text-5xl md:text-6xl font-light mb-6 text-black dark:text-white tracking-tight">
@@ -97,12 +97,6 @@ const Contact = () => {
                 </div>
               </CardContent>
             </Card>
-
-            {/* Location Info */}
-            <div className="text-center mt-12 flex items-center justify-center gap-3 text-gray-600 dark:text-gray-400">
-              <MapPin className="h-5 w-5" />
-              <span className="text-base font-light">Based in Kenya, Available Worldwide</span>
-            </div>
           </div>
         </div>
 
