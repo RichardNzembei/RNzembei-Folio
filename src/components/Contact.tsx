@@ -1,118 +1,67 @@
-import { Card, CardContent } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Github, Linkedin, MessageCircle, Mail, MapPin } from "lucide-react";
+import { Github, Linkedin, MessageCircle, Mail, ArrowUpRight } from "lucide-react";
+import { useEffect, useRef } from "react";
 
 const Contact = () => {
-  const contactMethods = [
-    {
-      icon: MessageCircle,
-      title: "WhatsApp",
-      link: "https://wa.me/+254716899396",
-      display: "+254 716899396"
-    },
-    {
-      icon: Linkedin,
-      title: "LinkedIn",
-      link: "https://www.linkedin.com/in/nzembei-reuben/",
-      display: "linkedin.com/in/nzembei-reuben"
-    },
-    {
-      icon: Github,
-      title: "GitHub",
-      link: "https://github.com/RichardNzembei",
-      display: "github.com/RichardNzembei"
-    },
-    {
-      icon: Mail,
-      title: "Email",
-      link: "mailto:richardsonreuben78@gmail.com",
-      display: "richardsonreuben78@gmail.com"
-    }
+  const sectionRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) entry.target.classList.add("animate-revealed");
+        });
+      },
+      { threshold: 0.1 }
+    );
+    sectionRef.current?.querySelectorAll(".animate-on-scroll").forEach((el) => observer.observe(el));
+    return () => observer.disconnect();
+  }, []);
+
+  const links = [
+    { href: "mailto:richardsonreuben78@gmail.com", icon: Mail, label: "Email", display: "richardsonreuben78@gmail.com" },
+    { href: "https://wa.me/+254716899396", icon: MessageCircle, label: "WhatsApp", display: "+254 716 899 396" },
+    { href: "https://www.linkedin.com/in/richard-reuben9/", icon: Linkedin, label: "LinkedIn", display: "linkedin.com/in/richard-reuben9" },
+    { href: "https://github.com/RichardNzembei", icon: Github, label: "GitHub", display: "github.com/RichardNzembei" },
   ];
 
   return (
-      <section id="contact" className="py-6 sm:py-10 px-6 bg-white dark:bg-black">
-        <div className="container mx-auto max-w-5xl">
-          <div className="text-center mb-20 sm:mb-28">
-            <h2 className="text-4xl sm:text-5xl md:text-6xl font-light mb-6 text-black dark:text-white tracking-tight">
-              Let's Connect
-            </h2>
-            <p className="text-lg sm:text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto font-light">
-              Ready to start a conversation?
-            </p>
-          </div>
-
-          <div className="max-w-4xl mx-auto">
-            {/* Contact Methods */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-px bg-gray-200 dark:bg-gray-800 border border-gray-200 dark:border-gray-800 rounded-3xl overflow-hidden mb-12">
-              {contactMethods.map((method, index) => (
-                  <button
-                      key={method.title}
-                      onClick={() => window.open(method.link, '_blank')}
-                      className="bg-white dark:bg-black p-8 sm:p-10 hover:bg-gray-50 dark:hover:bg-gray-950 transition-all duration-300 text-left group"
-                      style={{
-                        animationDelay: `${index * 0.1}s`,
-                        animation: 'fadeIn 0.6s ease-out forwards',
-                        opacity: 0
-                      }}
-                  >
-                    <div className="flex items-start gap-4">
-                      <div className="p-3 rounded-full border border-gray-200 dark:border-gray-800 group-hover:border-black dark:group-hover:border-white transition-all duration-300">
-                        <method.icon className="h-6 w-6 text-gray-600 dark:text-gray-400" />
-                      </div>
-                      <div className="flex-1">
-                        <h3 className="text-lg font-light text-black dark:text-white mb-2">{method.title}</h3>
-                        <p className="text-sm text-gray-600 dark:text-gray-400 font-light break-all">{method.display}</p>
-                      </div>
-                    </div>
-                  </button>
-              ))}
-            </div>
-
-            {/* CTA Section */}
-            <Card className="bg-gray-50 dark:bg-gray-950 border border-gray-200 dark:border-gray-800 rounded-3xl overflow-hidden">
-              <CardContent className="p-10 sm:p-16 text-center">
-                <h3 className="text-2xl sm:text-3xl font-light mb-4 text-black dark:text-white tracking-tight">
-                  Start Your Project
-                </h3>
-                <p className="text-base text-gray-600 dark:text-gray-400 mb-10 max-w-xl mx-auto font-light leading-relaxed">
-                  Whether you need a complete application or want to discuss your ideas,
-                  I'm here to help bring your vision to life.
-                </p>
-                <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                  <Button
-                      className="bg-black dark:bg-white text-white dark:text-black hover:bg-gray-800 dark:hover:bg-gray-200 transition-all duration-300 text-base py-6 px-10 rounded-full font-light tracking-wide border-0"
-                      onClick={() => window.open('https://wa.me/+254716899396', '_blank')}
-                  >
-                    <MessageCircle className="h-5 w-5 mr-2" />
-                    WhatsApp
-                  </Button>
-                  <Button
-                      className="bg-white dark:bg-black text-black dark:text-white hover:bg-gray-100 dark:hover:bg-gray-900 transition-all duration-300 border border-gray-300 dark:border-gray-700 text-base py-6 px-10 rounded-full font-light tracking-wide"
-                      onClick={() => window.open('mailto:richardsonreuben78@gmail.com', '_blank')}
-                  >
-                    <Mail className="h-5 w-5 mr-2" />
-                    Email
-                  </Button>
-                </div>
-              </CardContent>
-            </Card>
-          </div>
+    <section id="contact" ref={sectionRef} className="py-24 sm:py-32 px-6 bg-[#fafafa]">
+      <div className="container mx-auto max-w-5xl">
+        {/* Header — Apple centered */}
+        <div className="text-center mb-14 animate-on-scroll opacity-0 translate-y-8 transition-all duration-1000 ease-apple">
+          <p className="text-[11px] font-light text-gray-400 tracking-widest uppercase mb-2">Contact</p>
+          <h2 className="text-xl sm:text-2xl font-semibold text-black tracking-tight">
+            Let's work together.
+          </h2>
+          <p className="text-xs text-gray-500 font-light mt-3 max-w-sm mx-auto">
+            Have a project in mind? I'd love to hear about it.
+          </p>
         </div>
 
-        <style jsx>{`
-        @keyframes fadeIn {
-          from {
-            opacity: 0;
-            transform: translateY(20px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-      `}</style>
-      </section>
+        {/* Contact grid — Apple 2x2 card layout */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 max-w-2xl mx-auto">
+          {links.map(({ href, icon: Icon, label, display }, index) => (
+            <a
+              key={label}
+              href={href}
+              target={label !== "Email" ? "_blank" : undefined}
+              rel={label !== "Email" ? "noopener noreferrer" : undefined}
+              className="animate-on-scroll opacity-0 translate-y-6 transition-all duration-700 ease-apple bg-white rounded-xl p-4 flex items-center gap-3 group hover:shadow-[0_2px_20px_rgba(0,0,0,0.04)] transition-shadow"
+              style={{ transitionDelay: `${index * 60}ms` }}
+            >
+              <div className="w-8 h-8 rounded-lg bg-black/[0.04] flex items-center justify-center group-hover:bg-black/[0.07] transition-colors duration-300 shrink-0">
+                <Icon className="h-3.5 w-3.5 text-black" strokeWidth={1.5} />
+              </div>
+              <div className="flex-1 min-w-0">
+                <p className="text-[13px] font-medium text-black">{label}</p>
+                <p className="text-[11px] text-gray-500 font-light truncate">{display}</p>
+              </div>
+              <ArrowUpRight className="h-3.5 w-3.5 text-gray-300 group-hover:text-black transition-colors duration-300 shrink-0" />
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
   );
 };
 
